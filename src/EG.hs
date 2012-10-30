@@ -1,12 +1,8 @@
 import Combinations
-import IntegerMaths as IM
+import Polynomials
 
 main = do
-    putStrLn "n?"
-    n <- getLine
-    putStrLn "r?"
-    r <- getLine
-    putStrLn "nPr ="
-    print (Combinations.nPr (read n) (read r))
-    putStrLn "nCr ="
-    print (Combinations.nCr (read n) (read r))
+    putStrLn "Edges?"
+    e <- getLine
+    putStrLn "Taylor ="
+    print (taylorExpand 1 (read e) 10)
