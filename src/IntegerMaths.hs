@@ -20,4 +20,3 @@ module IntegerMaths (
     division num 0 = 0 -- Just define it as 0 to catch errors.
     division num den = (quot num den) + division (remainder num den) den
         where remainder num den = num - ((quot num den) * den)
-

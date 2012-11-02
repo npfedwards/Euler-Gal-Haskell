@@ -14,7 +14,8 @@
 
 module Combinations (
     nCr,
-    nPr
+    nPr,
+    factorial
 ) where
     import FoldPrime as Fold
     nPr :: Integer -> Integer -> Integer
@@ -24,3 +25,6 @@ module Combinations (
     nCr :: Integer -> Integer -> Integer
     nCr 0 r = 1
     nCr n r = quot (nPr n r) (foldl' (*) 1 [1..r])
+
+    factorial :: Integer -> Integer
+    factorial n = foldl' (*) 1 [1..n]
