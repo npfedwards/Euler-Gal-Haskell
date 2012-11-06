@@ -14,7 +14,8 @@
 
 module EGPowerSeries (
     pullChi,
-    egStarGraph
+    egStarGraph,
+    egGraph
 ) where
     import Polynomials
     import Data.List
@@ -25,6 +26,6 @@ module EGPowerSeries (
     egStarGraph :: Integer -> Integer -> [Integer]
     egStarGraph edges robots = multiplyBrackets (taylorExpand 1 edges robots) [1, 1-edges]
 
-
-
+    egGraph :: [Integer] -> Integer -> [Integer]
+    egGraph vertices robots= multiplyBrackets (taylorExpand 1 (quot (sum vertices) 2) robots) (foldl' multiplyBrackets [1] [[1,1-x]|x<-vertices])
 
