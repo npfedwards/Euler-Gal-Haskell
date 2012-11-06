@@ -3,5 +3,8 @@ import Checks
 import Combinations
 
 main = do
-    n <- getLine
-    print(starChecks (read n))
+    putStrLn "E?"
+    e <- getLine
+    putStrLn "R?"
+    r <- getLine
+    print(pullChi(egStarGraph (read e) (read r)) (read r))
