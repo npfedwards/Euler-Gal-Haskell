@@ -10,6 +10,7 @@ dispatch =  [ ("star", showStar)
             , ("graph", showGraph)
             , ("taylor", showTaylor)
             , ("multbrackets", showMultiplyBrackets)
+            , ("2D", run2D)
             ]
 
 main = do
@@ -32,3 +33,7 @@ showTaylor [a, b, bound, lowerbound] = do
 showMultiplyBrackets :: [String] -> IO()
 showMultiplyBrackets [a, b, bound] = do
     print(pullChi(multiplyBrackets  (taylorExpand (read a) (read b) (read bound) ((read bound)-2)) [1, 1-(read b)]) (read bound))
+
+run2D :: [String] -> IO()
+run2D [v, e, f, r] = do
+    print(eg2D (verticesMake (read v)) (read e) (read f) (read r))

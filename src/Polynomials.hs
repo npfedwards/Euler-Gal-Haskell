@@ -21,10 +21,10 @@ module Polynomials (
     import Data.List
 
     taylorExpand :: Integer -> Integer -> Integer -> Integer -> [Integer]
-    taylorExpand a b bound lowerbound -- expand (1-ax)^b as far as x^bound
+    taylorExpand a b bound lowerbound -- expand (1+ax)^-b as far as x^bound
         | bound < 0         = [0]
         | b == 0            = [1]
-        | otherwise         = [0|x<-[0..(lowerbound-1)]]++[(a^x)*(nCr (b+x-1) x)| x <- [lowerbound..bound]]
+        | otherwise         = [0|x<-[0..(lowerbound-1)]]++[((0-a)^x)*(nCr (b+x-1) x)| x <- [lowerbound..bound]]
 
     multiplyBrackets :: [Integer] -> [Integer] -> [Integer]
     multiplyBrackets as bs = addLists (listMultiplications as bs)
