@@ -36,4 +36,4 @@ showMultiplyBrackets [a, b, bound] = do
 
 run2D :: [String] -> IO()
 run2D [v, e, f, r] = do
-    print(eg2D (verticesMake (read v)) (read e) (read f) (read r))
+    print(pullChi(eg2D (verticesMake (read v)) (read e) (read f) (read r)) (read r))
