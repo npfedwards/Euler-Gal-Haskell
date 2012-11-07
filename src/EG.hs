@@ -16,7 +16,6 @@ main = do
     (command:args) <- getArgs
     let (Just action) = lookup command dispatch
     action args
-    print(linkofedge2D [1,2] [[1,2,3],[1,3,2],[],[5,4,3],[1,3,5],[2,3,4]])
 
 showStar :: [String] -> IO()
 showStar [e, r] = do
