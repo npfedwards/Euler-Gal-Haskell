@@ -24,9 +24,14 @@ module Polynomials (
     taylorExpand a b bound lowerbound -- expand (1+ax)^-b as far as x^bound
         | bound < 0         = [0]
         | b == 0            = [1]
+        | a == 0            = [1]
         | otherwise         = [0|x<-[0..(lowerbound-1)]]++[((0-a)^x)*(nCr (b+x-1) x)| x <- [lowerbound..bound]]
 
     multiplyBrackets :: [Integer] -> [Integer] -> [Integer]
+    multiplyBrackets as [0] = [0]
+    multiplyBrackets as [1] = as
+    multiplyBrackets [0] bs = [0]
+    multiplyBrackets [1] bs = bs
     multiplyBrackets as bs = addLists (listMultiplications as bs)
 
     listMultiplications :: [Integer] -> [Integer] -> [[Integer]]
