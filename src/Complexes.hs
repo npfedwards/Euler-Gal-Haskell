@@ -18,6 +18,7 @@ module Complexes (
     linkofvertex2D
 ) where
     import Data.List
+
     verticesMake :: Integer -> [Integer]
     verticesMake n = [0..(n-1)]
 
