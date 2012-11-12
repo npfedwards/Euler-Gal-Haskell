@@ -18,15 +18,15 @@ main = do
     let (Just action) = lookup command dispatch
     action args
 
-showStar :: [String] -> IO()
+showStar :: [String] -> IO() -- Takes edges and robots and gives Chi of the star graph
 showStar [e, r] = do
     print(pullChi (egStarGraph (read e) (read r)) (read r))
 
-showGraph :: [String] -> IO()
+showGraph :: [String] -> IO() -- Takes a list of vertices and #robots and gives Chi
 showGraph [v, r] = do
     print(pullChi (egGraph (read v) (read r)) (read r))
 
-showTaylor :: [String] -> IO()
+showTaylor :: [String] -> IO() -- Takes (1+ax)^-b and expands [0,...,0 (lowerbound)]++ expand to upper bound
 showTaylor [a, b, bound, lowerbound] = do
     print(pullChi (taylorExpand (read a) (read b) (read bound) (read lowerbound)) (read bound))
 
@@ -35,5 +35,7 @@ showMultiplyBrackets [a, b, bound] = do
     print(pullChi(multiplyBrackets  (taylorExpand (read a) (read b) (read bound) ((read bound)-2)) [1, 1-(read b)]) (read bound))
 
 run2D :: [String] -> IO()
-run2D [v, e, f, r] = do
+run2D [file, r] = do
     print(pullChi(eg2D (verticesMake (read v)) (read e) (read f) (read r)) (read r))
+        where   thefile <- getContents(file)
+                v:e:f = lines (read thefile)
