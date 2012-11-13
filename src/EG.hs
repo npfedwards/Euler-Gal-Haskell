@@ -11,6 +11,7 @@ dispatch =  [ ("star", showStar)
             , ("taylor", showTaylor)
             , ("multbrackets", showMultiplyBrackets)
             , ("2D", run2D)
+            , ("file", fileLines)
             ]
 
 main = do
@@ -35,8 +36,12 @@ showMultiplyBrackets [a, b, bound] = do
     print(pullChi(multiplyBrackets  (taylorExpand (read a) (read b) (read bound) ((read bound)-2)) [1, 1-(read b)]) (read bound))
 
 run2D :: [String] -> IO()
-run2D [file, r] = do
+run2D [file,r] = do
     thefile <- readFile file
     let [v,e,f] = lines thefile
     print(pullChi(eg2D (verticesMake (read v)) (read e) (read f) (read r)) (read r))
 
+fileLines :: [String] -> IO()
+fileLines [file] = do
+    thefile <- readFile file
+    print(lines thefile)
