@@ -12,13 +12,13 @@ catchIO = Exception.catch
 
 
 version :: Version
-version = Version {versionBranch = [0,0,1], versionTags = []}
+version = Version {versionBranch = [0,4], versionTags = []}
 bindir, libdir, datadir, libexecdir :: FilePath
 
-bindir     = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.0.1/bin"
-libdir     = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.0.1/lib"
-datadir    = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.0.1/share"
-libexecdir = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.0.1/libexec"
+bindir     = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.4/bin"
+libdir     = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.4/lib"
+datadir    = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.4/share"
+libexecdir = "/Users/nathanedwards/Library/Haskell/ghc-7.4.1/lib/Euler-Gal-Haskell-0.4/libexec"
 
 getBinDir, getLibDir, getDataDir, getLibexecDir :: IO FilePath
 getBinDir = catchIO (getEnv "Euler_Gal_Haskell_bindir") (\_ -> return bindir)

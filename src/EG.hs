@@ -11,7 +11,7 @@ dispatch =  [ ("star", showStar)
             , ("taylor", showTaylor)
             , ("multbrackets", showMultiplyBrackets)
             , ("2D", run2D)
-            , ("file", fileLines)
+            , ("onerobot", oneR)
             ]
 
 main = do
@@ -41,7 +41,8 @@ run2D [file,r] = do
     let [v,e,f] = lines thefile
     print(pullChi(eg2D (verticesMake (read v)) (read e) (read f) (read r)) (read r))
 
-fileLines :: [String] -> IO()
-fileLines [file] = do
+oneR :: [String] -> IO()
+oneR [file] = do
     thefile <- readFile file
-    print(lines thefile)
+    let [v,e,f] = lines thefile
+    print(oneRobot (read v) (read e) (read f))
