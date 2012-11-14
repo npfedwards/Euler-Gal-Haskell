@@ -43,5 +43,5 @@ module Checks (
     liststar :: Integer -> Integer -> [Integer] -- Returns a list of star checks
     liststar e n = [starCheck e x | x <- [1..n]]
 
-    oneRobot :: Integer -> [Integer] -> [Integer] -> Integer -- Takes #vertices, list of edges and robots and returns the euler characteristic where number of robots = 1
+    oneRobot :: Integer -> [[Integer]] -> [[Integer]] -> Integer -- Takes #vertices, list of edges and robots and returns the euler characteristic where number of robots = 1
     oneRobot v e f = v - genericLength(e) + genericLength(f)

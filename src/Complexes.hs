@@ -19,14 +19,14 @@ module Complexes (
 ) where
     import Data.List
 
-    verticesMake :: Integer -> [Integer]
+    verticesMake :: Integer -> [Integer] --Makes a list of n vertices
     verticesMake n = [0..(n-1)]
 
-    linkofedge2D :: [Integer] -> [[Integer]] -> Integer
-    linkofedge2D edge faces = genericLength(getTheStar edge faces)
+    linkofedge2D :: [Integer] -> [[Integer]] -> Integer -- Returns Chi of the star of an edge in 2D
+    linkofedge2D edge faces = genericLength(getTheStar edge faces) -- Length of the list of faces containing edge
 
-    getTheStar :: [Integer] -> [[Integer]] -> [[Integer]]
-    getTheStar simplex nsimplices = filter (flip all simplex . flip elem) nsimplices
+    getTheStar :: [Integer] -> [[Integer]] -> [[Integer]] -- Finds all nsimplices containing the simplex
+    getTheStar simplex nsimplices = filter (flip all simplex . flip elem) nsimplices -- filters the nsimplices that contain all vertices of simplex
 
-    linkofvertex2D :: [Integer] -> [[Integer]] -> [[Integer]] -> Integer
+    linkofvertex2D :: [Integer] -> [[Integer]] -> [[Integer]] -> Integer -- Returns Chi of the star of a vertex in 2D: V - E
     linkofvertex2D vertex edges faces = genericLength(getTheStar vertex edges) - genericLength(getTheStar vertex faces)

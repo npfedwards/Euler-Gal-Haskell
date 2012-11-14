@@ -18,13 +18,14 @@ module Combinations (
     factorial
 ) where
     import FoldPrime as Fold
-    nPr :: Integer -> Integer -> Integer
-    nPr 0 r = 1
-    nPr n r = foldl' (*) 1 [n-r+1..n]
 
-    nCr :: Integer -> Integer -> Integer
+    nPr :: Integer -> Integer -> Integer -- n Permute r
+    nPr 0 r = 1
+    nPr n r = foldl' (*) 1 [n-r+1..n] -- folds the list [n-r+1, ... , n] by multiplication
+
+    nCr :: Integer -> Integer -> Integer -- n Choose r
     nCr 0 r = 1
-    nCr n r = quot (nPr n r) (foldl' (*) 1 [1..r])
+    nCr n r = quot (nPr n r) (factorial r) -- quotients nPr by r!
 
     factorial :: Integer -> Integer
-    factorial n = foldl' (*) 1 [1..n]
+    factorial n = foldl' (*) 1 [1..n] -- folds the list [1, ... , n] by multiplication
