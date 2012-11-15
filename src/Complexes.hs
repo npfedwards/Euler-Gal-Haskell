@@ -30,3 +30,9 @@ module Complexes (
 
     linkofvertex2D :: [Integer] -> [[Integer]] -> [[Integer]] -> Integer -- Returns Chi of the star of a vertex in 2D: V - E
     linkofvertex2D vertex edges faces = genericLength(getTheStar vertex edges) - genericLength(getTheStar vertex faces)
+
+    checkEorF ::[[Integer]] -> [[Integer]] -- Removes duplicates from edges and faces
+    checkEorF list = nub (map sort list)
+
+    genVertices :: [[Integer]] -> [[Integer]] -> [Integer]
+    genVertices edges faces = nub ((concat $ edges) ++ (concat $ faces))

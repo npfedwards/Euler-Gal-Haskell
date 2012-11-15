@@ -25,6 +25,7 @@ module Polynomials (
         | bound < 0         = [0]
         | b == 0            = [1]
         | a == 0            = [1]
+        | b == 1            = [0|x<-[0..(lowerbound-1)]]++[((0-a)^x)| x <- [lowerbound..bound]]
         | otherwise         = [0|x<-[0..(lowerbound-1)]]++[((0-a)^x)*(nCr (b+x-1) x)| x <- [lowerbound..bound]]
 
     multiplyBrackets :: [Integer] -> [Integer] -> [Integer]
