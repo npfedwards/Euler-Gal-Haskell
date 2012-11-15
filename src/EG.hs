@@ -38,8 +38,9 @@ showMultiplyBrackets [a, b, bound] = do
 run2D :: [String] -> IO() -- Takes an v an Integer, and e,f [[Integer]] lists of simplices defined by vertices. Gives us Chi of our 2D Config Space.
 run2D [file,r] = do
     thefile <- readFile file
-    let [v,e,f] = lines thefile
-    print(pullChi(eg2D (verticesMake (read v)) (read e) (read f) (read r)) (read r))
+    let [e,f] = lines thefile
+    let v = genVertices (read e) (read f)
+    print(pullChi(eg2D v (read e) (read f) (read r)) (read r))
 
 oneR :: [String] -> IO()
 oneR [file] = do
