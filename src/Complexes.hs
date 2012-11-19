@@ -38,3 +38,7 @@ module Complexes (
 
     genVertices :: [[Integer]] -> [[Integer]] -> [Integer] -- generates a list of vertices based on the definitions of edges and faces
     genVertices edges faces = nub ((concat $ edges) ++ (concat $ faces))
+
+    removeLoops :: [[Integer]] -> Integer -> [[Integer]] -- Removes loops ie [2,2] or [1,1,3]. Currently just removes them entirely.
+    removeLoops list vs = filter (genericLength(filter (==)) < vs) list
+

@@ -12,6 +12,7 @@ dispatch =  [ ("star", showStar)
             , ("multbrackets", showMultiplyBrackets)
             , ("2D", run2D)
             , ("onerobot", oneR)
+            , ("kpage", kP)
             ]
 
 main = do
@@ -47,3 +48,7 @@ oneR [file] = do
     thefile <- readFile file
     let [v,e,f] = lines thefile
     print(oneRobot (read v) (read e) (read f))
+
+kP :: [String] -> IO()
+kP [k,r] = do
+    print(kPage (read k) (read r))
