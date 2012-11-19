@@ -34,7 +34,7 @@ module Complexes (
     linkofvertex2D vertex edges faces = genericLength(getTheStar vertex edges) - genericLength(getTheStar vertex faces)
 
     checkEorF ::[[Integer]] -> [[Integer]] -- Removes duplicates from edges and faces
-    checkEorF list = nub (map sort list)
+    checkEorF list = nub (map sort (removeLoops list))
 
     genVertices :: [[Integer]] -> [[Integer]] -> [Integer] -- generates a list of vertices based on the definitions of edges and faces
     genVertices edges faces = nub ((concat $ edges) ++ (concat $ faces))

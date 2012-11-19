@@ -40,8 +40,10 @@ run2D :: [String] -> IO() -- Takes an v an Integer, and e,f [[Integer]] lists of
 run2D [file,r] = do
     thefile <- readFile file
     let [e,f] = lines thefile
-    let v = genVertices (read e) (read f)
-    print(pullChi(eg2D v (read e) (read f) (read r)) (read r))
+    let edges = checkEorF (read e)
+    let faces = checkEorF (read f)
+    let v = genVertices edges faces
+    print(pullChi(eg2D v edges faces (read r)) (read r))
 
 oneR :: [String] -> IO()
 oneR [file] = do
