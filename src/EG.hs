@@ -13,6 +13,7 @@ dispatch =  [ ("star", showStar)
             , ("2D", run2D)
             , ("onerobot", oneR)
             , ("kpage", kP)
+            , ("gen", gen)
             ]
 
 main = do
@@ -54,3 +55,7 @@ oneR [file] = do
 kP :: [String] -> IO()
 kP [k,r] = do
     print(kPage (read k) (read r))
+
+gen :: [String] -> IO()
+gen [list, n] = do
+    print(genSimplices (read list) (read n))

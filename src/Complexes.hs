@@ -17,7 +17,8 @@ module Complexes (
     linkofedge2D,
     linkofvertex2D,
     checkEorF,
-    genVertices
+    genVertices,
+    genSimplices
 ) where
     import Data.List
 
@@ -44,4 +45,13 @@ module Complexes (
 
     noDuplicates :: [Integer] -> Bool
     noDuplicates list = list == nub list
+
+    genSimplices :: [[Integer]] -> Integer -> [[Integer]] -- Takes a list of m-simplices (m>n) and returns all n-simplices
+    genSimplices list n = filter (orderIs n) (concat' $ map subsequences list)
+
+    concat' :: [[[Integer]]] -> [[Integer]]
+    concat' = foldr (++) [[]]
+
+    orderIs :: Integer -> [Integer] -> Bool
+    orderIs n list = genericLength list == n
 
