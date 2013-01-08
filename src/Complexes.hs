@@ -18,7 +18,8 @@ module Complexes (
     linkofvertex2D,
     checkEorF,
     genVertices,
-    genSimplices
+    genSimplices,
+    linkofnsimplex
 ) where
     import Data.List
     import IntegerMaths
@@ -56,6 +57,6 @@ module Complexes (
     orderIs :: Integer -> [Integer] -> Bool
     orderIs n list = genericLength list == n
 
-    linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer
+    linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer --NOTE: Not finished doesn't work if complex not in order
     linkofnsimplex simplex listofsimplices = asum (map genericLength (map (getTheStar simplex) listofsimplices)) "p"
 

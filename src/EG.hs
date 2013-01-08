@@ -14,6 +14,7 @@ dispatch =  [ ("star", showStar)
             , ("onerobot", oneR)
             , ("kpage", kP)
             , ("gen", gen)
+            , ("link", link)
             ]
 
 main = do
@@ -59,3 +60,9 @@ kP [k,r] = do
 gen :: [String] -> IO()
 gen [list, n] = do
     print(genSimplices (read list) (read n))
+
+link :: [String] -> IO()
+link [simplex, file] = do
+    thefile <- readFile file
+    let complex = read (lines thefile)
+    print(linkofnsimplex (read simplex) (read complex))
