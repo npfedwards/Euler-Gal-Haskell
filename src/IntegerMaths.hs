@@ -24,6 +24,6 @@ module IntegerMaths (
 
     asum :: [Integer] -> String -> Integer
     asum [] neg = 0
-    asum x:xs 'n' = x - (asum xs 'p')
-    asum x:xs 'p' = x + (asum xs 'n')
-    asum x:xs neg = x + (asum xs 'n')
+    asum x:xs "n" = x - (asum xs "p")
+    asum x:xs "p" = x + (asum xs "n")
+    asum x:xs neg = x + (asum xs "n")

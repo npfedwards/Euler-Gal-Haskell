@@ -21,6 +21,7 @@ module Complexes (
     genSimplices
 ) where
     import Data.List
+    import IntegerMaths
 
     verticesMake :: Integer -> [Integer] --Makes a list of n vertices
     verticesMake n = [0..(n-1)]
@@ -56,5 +57,5 @@ module Complexes (
     orderIs n list = genericLength list == n
 
     linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer
-    linkofnsimplex simplex listofsimplices =
+    linkofnsimplex simplex listofsimplices = asum (map (genericLength getTheStar simplex) listofsimplices) 'p'
 
