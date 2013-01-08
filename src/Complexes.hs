@@ -55,3 +55,6 @@ module Complexes (
     orderIs :: Integer -> [Integer] -> Bool
     orderIs n list = genericLength list == n
 
+    linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer
+    linkofnsimplex simplex listofsimplices =
+
