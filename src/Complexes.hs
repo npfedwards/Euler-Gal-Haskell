@@ -57,5 +57,5 @@ module Complexes (
     orderIs n list = genericLength list == n
 
     linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer
-    linkofnsimplex simplex listofsimplices = asum (map (genericLength getTheStar simplex) listofsimplices) 'p'
+    linkofnsimplex simplex listofsimplices = asum (map genericLength (map (getTheStar simplex) listofsimplices)) "p"
 
