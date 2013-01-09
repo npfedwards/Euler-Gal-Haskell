@@ -58,5 +58,11 @@ module Complexes (
     orderIs n list = genericLength list == n
 
     linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer --NOTE: Not finished doesn't work if complex not in order
-    linkofnsimplex simplex listofsimplices = asum (map genericLength (map (getTheStar simplex) listofsimplices)) "p"
+    linkofnsimplex simplex listofsimplices = asum (map genericLength (map (getTheStar simplex) listofsimplices)) "p" -- Might need to be minus
+
+    genAll :: [[Integer]] -> Integer -> Integer -> [[[Integer]]]
+    genAll list m n newlist
+        | m > n     = newlist
+        | m == n    = newlist
+        | otherwise = list (m + 1) n (newlist ++ [genSimplices list m])
 

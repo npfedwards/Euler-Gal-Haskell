@@ -64,5 +64,8 @@ gen [list, n] = do
 link :: [String] -> IO()
 link [simplex, file] = do
     thefile <- readFile file
-    let complex = read (lines thefile)
+    let complex = lines thefile
+    let top = read (head complex)
+    let n = genericLength(head top)
+
     print(linkofnsimplex (read simplex) (read complex))
