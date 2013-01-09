@@ -4,6 +4,7 @@ import Combinations
 import Polynomials
 import System.Environment
 import Complexes
+import Data.List
 
 dispatch :: [(String, [String] -> IO())]
 dispatch =  [ ("star", showStar)
@@ -58,8 +59,10 @@ kP [k,r] = do
     print(kPage (read k) (read r))
 
 gen :: [String] -> IO()
-gen [list, n] = do
-    print(genSimplices (read list) (read n))
+gen [thelist] = do
+    let list = read thelist
+    let n = genericLength (head (head list))
+    print(genAll list 1 n [[[]]])
 
 link :: [String] -> IO()
 link [simplex, file] = do
@@ -67,5 +70,4 @@ link [simplex, file] = do
     let complex = lines thefile
     let top = read (head complex)
     let n = genericLength(head top)
-
-    print(linkofnsimplex (read simplex) (read complex))
+    print("foobar")
