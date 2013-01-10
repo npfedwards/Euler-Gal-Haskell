@@ -15,7 +15,6 @@ dispatch =  [ ("star", showStar)
             , ("onerobot", oneR)
             , ("kpage", kP)
             , ("gen", gen)
-            , ("link", link)
             ]
 
 main = do
@@ -61,13 +60,5 @@ kP [k,r] = do
 gen :: [String] -> IO()
 gen [thelist] = do
     let list = read thelist
-    let n = genericLength (head (head list))
-    print(genAll list 1 n [[[]]])
-
-link :: [String] -> IO()
-link [simplex, file] = do
-    thefile <- readFile file
-    let complex = lines thefile
-    let top = read (head complex)
-    let n = genericLength(head top)
-    print("foobar")
+    let n = genericLength (head list)
+    print(cleanList (genAll list 1 n [[[]]]))
