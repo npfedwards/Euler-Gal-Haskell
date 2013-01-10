@@ -5,6 +5,7 @@ import Polynomials
 import System.Environment
 import Complexes
 import Data.List
+import IntegerMaths
 
 dispatch :: [(String, [String] -> IO())]
 dispatch =  [ ("star", showStar)
@@ -15,6 +16,7 @@ dispatch =  [ ("star", showStar)
             , ("onerobot", oneR)
             , ("kpage", kP)
             , ("gen", gen)
+            , ("link", link)
             ]
 
 main = do
@@ -62,3 +64,10 @@ gen [thelist] = do
     let list = read thelist
     let n = genericLength (head list)
     print(cleanList (genAll list 1 n [[[]]]))
+
+link :: [String] -> IO()
+link [thelist, simplex] = do
+    let list = read thelist
+    let n = genericLength (head list)
+    let newlist = cleanList (genAll list 1 n [[[]]])
+    print(linkofnsimplex (read simplex) newlist)

@@ -61,14 +61,13 @@ module Complexes (
 
     linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer --NOTE: doesn't work if complex not in order
     linkofnsimplex simplex listofsimplices
-        | odd genericLength(simplex)     = asum (map genericLength (map (getTheStar simplex) listofsimplices)) "p" + 1
-        | otherwise                      = asum (map genericLength (map (getTheStar simplex) listofsimplices)) "p" - 1
+        | odd (genericLength simplex)     = asum (map genericLength (map (getTheStar simplex) listofsimplices)) + 1
+        | otherwise                      = 1 - asum (map genericLength (map (getTheStar simplex) listofsimplices))
 
     genAll :: [[Integer]] -> Integer -> Integer -> [[[Integer]]] -> [[[Integer]]]
     genAll list m n newlist
         | m > n     = newlist
-        | m == n    = newlist
         | otherwise = genAll list (m + 1) n (newlist ++ [genSimplices list m])
 
-    cleanList :: [[[Integer]]] -> [[[Integer]]]
+    cleanList :: [[[Integer]]] -> [[[Integer]]] -- Still needs to remove duplicates
     cleanList list = map nub (map (map sort) list)
