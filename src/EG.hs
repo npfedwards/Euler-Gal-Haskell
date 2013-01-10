@@ -5,7 +5,6 @@ import Polynomials
 import System.Environment
 import Complexes
 import Data.List
-import IntegerMaths
 
 dispatch :: [(String, [String] -> IO())]
 dispatch =  [ ("star", showStar)

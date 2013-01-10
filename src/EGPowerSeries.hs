@@ -40,3 +40,15 @@ module EGPowerSeries (
             multiplyBrackets
                 [1]
                 ([[1,1]|x<-faces] ++ [[1,1 - (linkofvertex2D [v] edges faces)]|v<-vertices] ++ [taylorExpand ((linkofedge2D e faces)-1) 1 robots 0|e<-edges])
+
+    egGeneral :: [[[Integer]]] -> Integer -> [Integer]
+    egGeneral list robots =
+        foldl'
+            multiplyBrackets
+                [1]
+                makeTheList list (tail list) robots
+
+    makeTheList :: [[[Integer]]] -> [[[Integer]]] -> Integer -> [Integer]
+    makeTheList list [[[]]] robots = []
+    makeTheList list remaininglist robots =
+        [[1,1 - (linkofnsimplex simplex list)]|simplex<-(head remaininglist)] ++ [taylorExpand ((linkofnsimplex simplex list)-1) 1 robots 0|simplex<-head (tail remaininglist)] ++ makeTheList list (tail (tail remaininglist)) robots
