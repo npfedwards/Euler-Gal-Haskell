@@ -46,9 +46,9 @@ module EGPowerSeries (
         foldl'
             multiplyBrackets
                 [1]
-                makeTheList list (tail list) robots
+                (makeTheList list (tail list) robots)
 
-    makeTheList :: [[[Integer]]] -> [[[Integer]]] -> Integer -> [Integer]
+    makeTheList :: [[[Integer]]] -> [[[Integer]]] -> Integer -> [[Integer]]
     makeTheList list [[[]]] robots = []
     makeTheList list remaininglist robots =
         [[1,1 - (linkofnsimplex simplex list)]|simplex<-(head remaininglist)] ++ [taylorExpand ((linkofnsimplex simplex list)-1) 1 robots 0|simplex<-head (tail remaininglist)] ++ makeTheList list (tail (tail remaininglist)) robots
