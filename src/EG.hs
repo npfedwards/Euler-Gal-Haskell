@@ -76,4 +76,6 @@ makeList :: [String] -> IO()
 makeList [thelist, robots] = do
     let list = read thelist
     let r = read robots
-    print(makeTheList list (tail list) r)
+    let n = genericLength (head list)
+    --let nlist = cleanList (genAll list 1 n [[[]]])
+    print(makeTheList list list r)
