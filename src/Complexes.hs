@@ -1,14 +1,10 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  Complexes
--- Copyright   :
--- License     :  AllRightsReserved
+-- Copyright   :  Nathan Edwards
+-- License     :  Creative Commons Attribution ShareAlike 3.0
 --
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
+-- Functions for creating data structures of complexes and finding the links of simplices
 --
 -----------------------------------------------------------------------------
 

@@ -1,14 +1,10 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  Polynomials
--- Copyright   :
--- License     :  AllRightsReserved
+-- Copyright   :  Nathan Edwards
+-- License     :  Creative Commons Attribution ShareAlike 3.0
 --
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
+-- Manipulation of an polynomials/power series
 --
 -----------------------------------------------------------------------------
 

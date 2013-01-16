@@ -1,14 +1,10 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  FoldPrime
--- Copyright   :
--- License     :  AllRightsReserved
+-- Copyright   :  Nathan Edwards
+-- License     :  Creative Commons ShareAlike 3.0
 --
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
+-- The standard fold' improvement on fold
 --
 -----------------------------------------------------------------------------
 

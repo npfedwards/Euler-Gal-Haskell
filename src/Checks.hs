@@ -1,14 +1,10 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  Checks
--- Copyright   :
--- License     :  AllRightsReserved
+-- Copyright   :  Nathan Edwards
+-- License     :  Creative Commons Attribution ShareAlike 3.0
 --
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
+-- This module contains functions to check whether the results given by the EGPowerSeries functions are accurate.
 --
 -----------------------------------------------------------------------------
 

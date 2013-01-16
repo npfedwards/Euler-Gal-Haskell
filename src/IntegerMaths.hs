@@ -1,14 +1,10 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  IntegerMaths
--- Copyright   :
--- License     :  AllRightsReserved
+-- Copyright   :  Nathan Edwards
+-- License     :  Creative Commons Attribution ShareAlike 3.0
 --
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
+-- Integer division and an alternating sum
 --
 -----------------------------------------------------------------------------
 

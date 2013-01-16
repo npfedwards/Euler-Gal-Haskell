@@ -2,13 +2,9 @@
 --
 -- Module      :  EGPowerSeries
 -- Copyright   :  Nathan Edwards
--- License     :  AllRightsReserved
+-- License     :  Creative Commons Attribution ShareAlike 3.0
 --
--- Maintainer  :  Nathan Edwards
--- Stability   :  1
--- Portability :
---
--- |
+-- Computations of the Euler Gal Power Series for a configuration space
 --
 -----------------------------------------------------------------------------
 
@@ -16,7 +12,9 @@ module EGPowerSeries (
     pullChi,
     egStarGraph,
     egGraph,
-    eg2D
+    eg2D,
+    egGeneral,
+    makeTheList
 ) where
     import Polynomials
     import Data.List

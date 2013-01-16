@@ -1,14 +1,8 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  Combinations
--- Copyright   :
--- License     :  AllRightsReserved
---
--- Maintainer  :
--- Stability   :
--- Portability :
---
--- |
+-- Copyright   :  Nathan Edwards
+-- License     :  Creative Commons Attribution ShareAlike 3.0
 --
 -----------------------------------------------------------------------------
 
