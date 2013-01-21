@@ -48,6 +48,6 @@ module EGPowerSeries (
 
     makeTheList :: [[[Integer]]] -> [[[Integer]]] -> Integer -> [[Integer]]
     makeTheList list remaininglist robots
-        | length(remaininglist) == 0                = [[1]]
-        | odd (genericLength(head remaininglist))   = [[1,1 - (linkofnsimplex simplex list)]|simplex<-(head remaininglist)] ++ makeTheList list (tail remaininglist) robots
-        | otherwise                                 = [taylorExpand ((linkofnsimplex simplex list)-1) 1 robots 0|simplex<-head (tail remaininglist)] ++ makeTheList list (tail remaininglist) robots
+        | length(remaininglist) == 0                        = [[1]]
+        | odd (genericLength(head (head remaininglist)))    = [[1,1 - (linkofnsimplex simplex list)]|simplex<-(head remaininglist)] ++ makeTheList list (tail remaininglist) robots
+        | otherwise                                         = [taylorExpand ((linkofnsimplex simplex list)-1) 1 robots 0|simplex<-(head remaininglist)] ++ makeTheList list (tail remaininglist) robots

@@ -16,7 +16,7 @@ dispatch =  [ ("star", showStar)
             , ("kpage", kP)
             , ("gen", gen)
             , ("link", link)
-            , ("makelist", makeList)
+            , ("eg", eg)
             ]
 
 main = do
@@ -72,10 +72,10 @@ link [thelist, simplex] = do
     let newlist = cleanList (genAll list 1 n [[[]]])
     print(linkofnsimplex (read simplex) newlist)
 
-makeList :: [String] -> IO()
-makeList [thelist, robots] = do
+eg :: [String] -> IO()
+eg [thelist, robots] = do
     let list = read thelist
     let r = read robots
-    let n = genericLength (head list)
-    --let nlist = cleanList (genAll list 1 n [[[]]])
-    print(makeTheList list list r)
+    let n = genericLength(head list)
+    let newlist = cleanList (genAll list 1 n [[[]]])
+    print(pullChi(egGeneral newlist r) r)
