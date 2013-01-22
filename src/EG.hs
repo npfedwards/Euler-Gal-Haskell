@@ -27,6 +27,7 @@ dispatch =  [ ("star", showStar)
             , ("gen", gen)
             , ("link", link)
             , ("eg", eg)
+            , ("readme", readme)
             ]
 
 main = do
@@ -89,3 +90,7 @@ eg [thelist, robots] = do
     let n = genericLength(head list)
     let newlist = cleanList (genAll list 1 n [[[]]])
     print(pullChi(egGeneral newlist r) r)
+
+readme :: IO()
+readme = do
+    print("readme")
