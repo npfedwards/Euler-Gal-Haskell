@@ -12,7 +12,8 @@ module Checks (
     starCheck,
     starChecks,
     oneRobot,
-    kPage
+    kPage,
+    manifold
 ) where
     import Combinations
     import IntegerMaths
@@ -49,4 +50,11 @@ module Checks (
                             multiplyBrackets
                             [1]
                             ([[1,1]|x<-[1..k]] ++ [taylorExpand (k-1) 1 r 0])) r
+
+    manifold :: Integer -> Integer -> Integer -> Integer -- Uses Theorem 2.5 (Farber) to find eu_X for a manifold.
+    manifold chi dim r
+        |   odd dim     =   pullChi (taylorExpand (0-1) chi r (r-1)) r
+        |   otherwise   =   pullChi (Fp.foldl' multiplyBrackets [1] [[1,1]|x<-[1..chi]]) r
+
+
 

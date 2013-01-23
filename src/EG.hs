@@ -25,6 +25,7 @@ dispatch =  [ ("star", showStar)
             , ("eg", eg)
             , ("readme", readme)
             , ("help", readme)
+            , ("manifold", mf)
             ]
 
 main = do
@@ -66,6 +67,10 @@ eg [thelist, robots] = do
     let n = genericLength(head list)
     let newlist = cleanList (genAll list 1 n [[[]]])
     print(pullChi(egGeneral newlist r) r)
+
+mf :: [String] -> IO() --Gives Chi of a manifold
+mf [chi, dim, r] = do
+    print(manifold (read chi) (read dim) (read r))
 
 readme :: [String] -> IO() -- Prints the readme
 readme [anything] = do
