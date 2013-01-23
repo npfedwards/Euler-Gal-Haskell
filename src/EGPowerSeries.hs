@@ -39,14 +39,14 @@ module EGPowerSeries (
                 [1]
                 ([[1,1]|x<-faces] ++ [[1,1 - (linkofvertex2D [v] edges faces)]|v<-vertices] ++ [taylorExpand ((linkofedge2D e faces)-1) 1 robots 0|e<-edges])
 
-    egGeneral :: [[[Integer]]] -> Integer -> [Integer]
+    egGeneral :: [[[Integer]]] -> Integer -> [Integer] -- Works out the Euler-Gal power series of a arbitrary simplicial complex
     egGeneral list robots =
         foldl'
             multiplyBrackets
                 [1]
                 (makeTheList list (tail list) robots)
 
-    makeTheList :: [[[Integer]]] -> [[[Integer]]] -> Integer -> [[Integer]]
+    makeTheList :: [[[Integer]]] -> [[[Integer]]] -> Integer -> [[Integer]] -- Makes a list of polynomials to be multiplied. 1 per simplex, pertaining to p(t), q(t) as of Euler-Gal.
     makeTheList list remaininglist robots
         | length(remaininglist) == 0                        = [[1]]
         | odd (genericLength(head (head remaininglist)))    = [[1,1 - (linkofnsimplex simplex list)]|simplex<-(head remaininglist)] ++ makeTheList list (tail remaininglist) robots

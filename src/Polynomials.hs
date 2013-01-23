@@ -24,7 +24,7 @@ module Polynomials (
         | b == 1            = [0|x<-[0..(lowerbound-1)]]++[((0-a)^x)| x <- [lowerbound..bound]]
         | otherwise         = [0|x<-[0..(lowerbound-1)]]++[((0-a)^x)*(nCr (b+x-1) x)| x <- [lowerbound..bound]]
 
-    multiplyBrackets :: [Integer] -> [Integer] -> [Integer]
+    multiplyBrackets :: [Integer] -> [Integer] -> [Integer] -- Multplies two lists as if they are ordered lists of the coefficients of a polynomial.
     multiplyBrackets as [0] = [0]
     multiplyBrackets as [1] = as
     multiplyBrackets [0] bs = [0]
