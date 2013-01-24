@@ -26,6 +26,7 @@ dispatch =  [ ("star", showStar)
             , ("readme", readme)
             , ("help", readme)
             , ("manifold", mf)
+            , ("onerobotgen", oneRG)
             ]
 
 main = do
@@ -55,6 +56,10 @@ oneR [file] = do
     thefile <- readFile file
     let [v,e,f] = lines thefile
     print(oneRobot (read v) (read e) (read f))
+
+oneRG :: [String] -> IO()
+oneRG [list] = do
+    print(oneRobotGeneral (read list))
 
 kP :: [String] -> IO() -- Gives Chi of a k-paged book
 kP [k,r] = do

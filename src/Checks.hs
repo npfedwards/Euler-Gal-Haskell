@@ -13,7 +13,8 @@ module Checks (
     starChecks,
     oneRobot,
     kPage,
-    manifold
+    manifold,
+    oneRobotGeneral
 ) where
     import Combinations
     import IntegerMaths
@@ -21,6 +22,7 @@ module Checks (
     import EGPowerSeries
     import Data.List
     import Polynomials
+    import Complexes
 
     fStar :: Integer -> Integer -> Integer -- Ordered case for a star of order mu with n robots
     fStar mu n = 0 - ((nPr (mu + n - 2) (n - 1)) * (((n - 1) * mu) - (2 * n) + 1))
@@ -44,6 +46,10 @@ module Checks (
 
     oneRobot :: Integer -> [[Integer]] -> [[Integer]] -> Integer -- Takes #vertices, list of edges and robots and returns the euler characteristic where number of robots = 1
     oneRobot v e f = v - genericLength(e) + genericLength(f)
+
+    oneRobotGeneral :: [[Integer]] -> Integer
+    oneRobotGeneral list = 1 - asum (map genericLength (cleanList (genAll list 1 n [[[]]])))
+        where n = genericLength(head list)
 
     kPage :: Integer -> Integer -> Integer
     kPage k r = pullChi (Fp.foldl'
