@@ -2,7 +2,7 @@
 --
 -- Program     :  EG
 -- Copyright   :  Nathan Edwards
--- License     :  Creative Commons Attribution ShareAlike 3.0
+-- License     :  GPLv3
 --
 -- Computations of the Euler Gal Power Series for a configuration space
 --

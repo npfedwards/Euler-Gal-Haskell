@@ -2,7 +2,7 @@
 --
 -- Module      :  Checks
 -- Copyright   :  Nathan Edwards
--- License     :  Creative Commons Attribution ShareAlike 3.0
+-- License     :  GPLv3
 --
 -- This module contains functions to check whether the results given by the EGPowerSeries functions are accurate.
 --

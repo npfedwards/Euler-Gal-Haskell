@@ -2,7 +2,7 @@
 --
 -- Module      :  Combinations
 -- Copyright   :  Nathan Edwards
--- License     :  Creative Commons Attribution ShareAlike 3.0
+-- License     :  GPLv3
 --
 -----------------------------------------------------------------------------
 

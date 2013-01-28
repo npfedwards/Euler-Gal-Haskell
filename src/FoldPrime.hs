@@ -1,8 +1,6 @@
 -----------------------------------------------------------------------------
 --
 -- Module      :  FoldPrime
--- Copyright   :  Nathan Edwards
--- License     :  Creative Commons ShareAlike 3.0
 --
 -- The standard fold' improvement on fold
 --

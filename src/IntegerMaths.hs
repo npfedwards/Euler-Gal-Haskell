@@ -2,7 +2,7 @@
 --
 -- Module      :  IntegerMaths
 -- Copyright   :  Nathan Edwards
--- License     :  Creative Commons Attribution ShareAlike 3.0
+-- License     :  GPLv3
 --
 -- Integer division and an alternating sum
 --

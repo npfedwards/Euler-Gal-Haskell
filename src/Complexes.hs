@@ -2,7 +2,7 @@
 --
 -- Module      :  Complexes
 -- Copyright   :  Nathan Edwards
--- License     :  Creative Commons Attribution ShareAlike 3.0
+-- License     :  GPLv3
 --
 -- Functions for creating data structures of complexes and finding the links of simplices
 --
