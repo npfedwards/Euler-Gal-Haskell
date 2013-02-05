@@ -20,13 +20,12 @@ dispatch :: [(String, [String] -> IO())]
 dispatch =  [ ("star", showStar)
             , ("graph", showGraph)
             , ("2D", run2D)
-            , ("onerobot", oneR)
             , ("kpage", kP)
             , ("eg", eg)
             , ("readme", readme)
             , ("help", readme)
             , ("manifold", mf)
-            , ("onerobotgen", oneRG)
+            , ("onerobot", oneRG)
             ]
 
 main = do
@@ -50,12 +49,6 @@ run2D [file,r] = do
     let edges = checkEorF (genSimplices faces 2 ++ (read ae))
     let v = genVertices edges faces
     print(pullChi(eg2D v edges faces (read r)) (read r))
-
-oneR :: [String] -> IO() -- Gives the result for one robot for a 2D complex
-oneR [file] = do
-    thefile <- readFile file
-    let [v,e,f] = lines thefile
-    print(oneRobot (read v) (read e) (read f))
 
 oneRG :: [String] -> IO()
 oneRG [list] = do
