@@ -17,7 +17,8 @@ module Complexes (
     genSimplices,
     linkofnsimplex,
     genAll,
-    cleanList
+    cleanList,
+    erdosGallai
 ) where
     import Data.List
     import IntegerMaths
@@ -57,7 +58,7 @@ module Complexes (
 
     linkofnsimplex :: [Integer] -> [[[Integer]]] -> Integer --NOTE: doesn't work if complex not in order
     linkofnsimplex simplex listofsimplices
-        | odd (genericLength simplex)     = asum (map genericLength (map (getTheStar simplex) listofsimplices)) + 1
+        | odd (genericLength simplex)    = 1 + asum (map genericLength (map (getTheStar simplex) listofsimplices))
         | otherwise                      = 1 - asum (map genericLength (map (getTheStar simplex) listofsimplices))
 
     genAll :: [[Integer]] -> Integer -> Integer -> [[[Integer]]] -> [[[Integer]]] -- Generates a list of simplices in increasing order.
@@ -67,3 +68,9 @@ module Complexes (
 
     cleanList :: [[[Integer]]] -> [[[Integer]]]
     cleanList list = map removeLoops (map nub (map (map sort) list))
+
+    erdosGallai :: [Integer] -> Integer -> String -- Checks validity of a list of valencies by Erdos Gallai
+    erdosGallai sorted k
+        | genericDrop k sorted == []                                                                                  = "TRUE"
+        | foldl' (+) 0 (genericTake k sorted) <= k*(k-1) + (foldl' (+) 0 (genericDrop k (zipWith (min) sorted [1..])))    = erdosGallai sorted (k+1)
+        | otherwise                                                                                                   = "FALSE"

@@ -19,6 +19,7 @@ module EGPowerSeries (
     import Polynomials
     import Data.List
     import Complexes
+    import IntegerMaths
 
     pullChi :: [Integer] -> Integer -> Integer -- Takes the nth term of the list (ie, Chi of a poly)
     pullChi list n = genericIndex list n
@@ -29,7 +30,7 @@ module EGPowerSeries (
     egGraph :: [Integer] -> Integer -> [Integer] -- Works out the Euler-Gal power series of any graph
     egGraph vertices robots =
         multiplyBrackets
-            (taylorExpand (0-1) (quot (sum vertices) 2) robots (robots - genericLength(vertices) -1))
+            (taylorExpand (0-1) (division (sum vertices) 2) robots (max (robots - genericLength(vertices) -1) 0))
             (foldl' multiplyBrackets [1] [[1,1-x]|x<-vertices])
 
     eg2D :: [Integer] -> [[Integer]] -> [[Integer]] -> Integer -> [Integer] -- Works out the Euler-Gal power series of a 2D Simplicial Complex.

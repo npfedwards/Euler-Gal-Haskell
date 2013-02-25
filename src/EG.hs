@@ -39,7 +39,15 @@ showStar [e, r] = do
 
 showGraph :: [String] -> IO() -- Takes a list of vertices and #robots and gives Chi
 showGraph [v, r] = do
-    print(pullChi (egGraph (read v) (read r)) (read r))
+    let vert = read v
+    let sorted = reverse (sort vert)
+    if ((sum sorted) `mod` 2 == 0)
+        then if (erdosGallai sorted 1 == "TRUE")
+            then print(pullChi (egGraph (read v) (read r)) (read r))
+            else print("This is not a valid graph by Erdos Gallai")
+        else print("This is not a valid graph by Hand Shaking Lemma")
+
+
 
 run2D :: [String] -> IO() -- Takes an v an Integer, and e,f [[Integer]] lists of simplices defined by vertices. Gives us Chi of our 2D Config Space.
 run2D [file,r] = do

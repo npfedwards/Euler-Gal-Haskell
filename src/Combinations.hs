@@ -12,6 +12,7 @@ module Combinations (
     factorial
 ) where
     import FoldPrime as Fold
+    import IntegerMaths
 
     nPr :: Integer -> Integer -> Integer -- n Permute r
     nPr 0 r = 1
@@ -22,7 +23,7 @@ module Combinations (
         | n == 0        = 1
         | r == 1        = n
         | r == n - 1    = n
-        | otherwise     = quot (nPr n r) (factorial r) -- quotients nPr by r!
+        | otherwise     = division (nPr n r) (factorial r) -- quotients nPr by r!
 
     factorial :: Integer -> Integer
     factorial n = foldl' (*) 1 [1..n] -- folds the list [1, ... , n] by multiplication
