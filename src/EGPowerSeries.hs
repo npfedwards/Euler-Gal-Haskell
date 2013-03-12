@@ -31,7 +31,7 @@ module EGPowerSeries (
     egGraph vertices robots =
         multiplyBrackets
             (taylorExpand (0-1) (division (sum vertices) 2) robots (max (robots - genericLength(vertices) -1) 0))
-            (foldl' multiplyBrackets [1] [[1,1-x]|x<-vertices])
+            (genericTake robots (foldl' multiplyBrackets [1] [[1,1-x]|x<-vertices]))
 
     eg2D :: [Integer] -> [[Integer]] -> [[Integer]] -> Integer -> [Integer] -- Works out the Euler-Gal power series of a 2D Simplicial Complex.
     eg2D vertices edges faces robots =

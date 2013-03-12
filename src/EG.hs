@@ -26,6 +26,8 @@ dispatch =  [ ("star", showStar)
             , ("help", readme)
             , ("manifold", mf)
             , ("onerobot", oneRG)
+            , ("graphfile", graphfile)
+            , ("graphnocheck", graphfilenocheck)
             ]
 
 main = do
@@ -47,7 +49,25 @@ showGraph [v, r] = do
             else print("This is not a valid graph by Erdos Gallai")
         else print("This is not a valid graph by Hand Shaking Lemma")
 
+graphfile :: [String] -> IO() -- Takes a list of vertices (delimited by new lines) from a file and #robots and gives Chi
+graphfile [thefile, r] = do
+    file <- readFile thefile
+    let vert = map read (lines file)
+    let sorted = reverse (sort vert)
+    if ((sum sorted) `mod` 2 == 0)
+        then if (erdosGallai sorted 1 == "TRUE")
+            then print(pullChi (egGraph vert (read r)) (read r))
+            else print("This is not a valid graph by Erdos Gallai")
+        else print("This is not a valid graph by Hand Shaking Lemma")
 
+graphfilenocheck :: [String] -> IO() -- Doesn't run the Erdos Gallai checkEorF
+graphfilenocheck [thefile, r] = do
+    file <- readFile thefile
+    let vert = map read (lines file)
+    let sorted = reverse (sort vert)
+    if ((sum sorted) `mod` 2 == 0)
+        then print(pullChi (egGraph vert (read r)) (read r))
+        else print("This is not a valid graph by Hand Shaking Lemma")
 
 run2D :: [String] -> IO() -- Takes an v an Integer, and e,f [[Integer]] lists of simplices defined by vertices. Gives us Chi of our 2D Config Space.
 run2D [file,r] = do
