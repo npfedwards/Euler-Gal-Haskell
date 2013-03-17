@@ -14,7 +14,8 @@ module EGPowerSeries (
     egGraph,
     eg2D,
     egGeneral,
-    makeTheList
+    makeTheList,
+    egCylinder
 ) where
     import Polynomials
     import Data.List
@@ -31,7 +32,7 @@ module EGPowerSeries (
     egGraph vertices robots =
         multiplyBrackets
             (taylorExpand (0-1) (division (sum vertices) 2) robots (max (robots - genericLength(vertices) -1) 0))
-            (genericTake robots (foldl' multiplyBrackets [1] [[1,1-x]|x<-vertices]))
+            (genericTake (robots+1) (foldl' multiplyBrackets [1] [[1,1-x]|x<-vertices]))
 
     eg2D :: [Integer] -> [[Integer]] -> [[Integer]] -> Integer -> [Integer] -- Works out the Euler-Gal power series of a 2D Simplicial Complex.
     eg2D vertices edges faces robots =
@@ -52,3 +53,16 @@ module EGPowerSeries (
         | length(remaininglist) == 0                        = [[1]]
         | odd (genericLength(head (head remaininglist)))    = [[1,1 - (linkofnsimplex simplex list)]|simplex<-(head remaininglist)] ++ makeTheList list (tail remaininglist) robots
         | otherwise                                         = [taylorExpand ((linkofnsimplex simplex list)-1) 1 robots 0|simplex<-(head remaininglist)] ++ makeTheList list (tail remaininglist) robots
+
+    cylinderList :: [[[Integer]]] -> [[[Integer]]] -> Integer -> [[Integer]] -- Makes a list of polynomials to be multiplied. 1 per simplex, pertaining to p(t), q(t) as of Euler-Gal.
+    cylinderList list remaininglist robots
+        | length(remaininglist) == 0                        = [[1]]
+        | even (genericLength(head (head remaininglist)))   = [[1,1 - (linkofnsimplex simplex list)]|simplex<-(head remaininglist)] ++ cylinderList list (tail remaininglist) robots
+        | otherwise                                         = [taylorExpand ((linkofnsimplex simplex list)-1) 1 robots 0|simplex<-(head remaininglist)] ++ cylinderList list (tail remaininglist) robots
+
+    egCylinder :: [[[Integer]]] -> Integer -> [Integer]
+    egCylinder list robots =
+        foldl'
+            multiplyBrackets
+                [1]
+                (cylinderList list (tail list) robots)

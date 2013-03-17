@@ -28,6 +28,9 @@ dispatch =  [ ("star", showStar)
             , ("onerobot", oneRG)
             , ("graphfile", graphfile)
             , ("graphnocheck", graphfilenocheck)
+            , ("cylinder", cylinder)
+            , ("egseries", egseries)
+            , ("cylinderseries", cylinderseries)
             ]
 
 main = do
@@ -93,6 +96,31 @@ eg [thelist, robots] = do
     let n = genericLength(head list)
     let newlist = cleanList (genAll list 1 n [[[]]])
     print(pullChi(egGeneral newlist r) r)
+
+egseries :: [String] -> IO()
+egseries [thelist, robots] = do
+    let list = read thelist
+    let r = read robots
+    let n = genericLength(head list)
+    let newlist = cleanList (genAll list 1 n [[[]]])
+    print(genericTake r (egGeneral newlist r))
+
+cylinder :: [String] -> IO()
+cylinder [thelist, robots] = do
+    let list = read thelist
+    let r = read robots
+    let n = genericLength(head list)
+    let newlist = cleanList (genAll list 1 n [[[]]])
+    print(pullChi(egCylinder newlist r) r)
+
+cylinderseries :: [String] -> IO()
+cylinderseries [thelist, robots] = do
+    let list = read thelist
+    let r = read robots
+    let n = genericLength(head list)
+    let newlist = cleanList (genAll list 1 n [[[]]])
+    print(genericTake r (egCylinder newlist r))
+
 
 mf :: [String] -> IO() --Gives Chi of a manifold
 mf [chi, dim, r] = do
